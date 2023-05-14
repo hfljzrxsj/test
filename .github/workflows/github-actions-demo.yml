@@ -3,9 +3,9 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   workflow_dispatch:
   push:
-  schedule:
-    - cron: "20 10 * * *"
-    - cron: "20 4 * * *"
+  # schedule:
+  #   - cron: "20 10 * * *"
+  #   - cron: "20 4 * * *"
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -26,17 +26,17 @@ jobs:
         run: |
           . ./.venv/bin/activate
           python ./a.py
-      - name: Send email
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.office365.com
-          server_port: 587
-          username: chuangtiso@outlook.com
-          password: ${{secrets.MAIL_PASSWORD}}
-          subject: Github Actions job result
-          to: 2506370693@qq.com
-          from: chuangtiso@outlook.com
-          body: ${{steps.git_log.outputs.log}}
+      # - name: Send email
+      #   uses: dawidd6/action-send-mail@v3
+      #   with:
+      #     server_address: smtp.office365.com
+      #     server_port: 587
+      #     username: chuangtiso@outlook.com
+      #     password: ${{secrets.MAIL_PASSWORD}}
+      #     subject: Github Actions job result
+      #     to: 2506370693@qq.com
+      #     from: chuangtiso@outlook.com
+      #     body: ${{steps.git_log.outputs.log}}
           # push log : ${{steps.git_log.outputs.log}}
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"

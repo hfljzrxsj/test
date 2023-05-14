@@ -1,1 +1,5 @@
 print(11)
+f=open("test.txt","a")
+f.write("22")
+f.flush()
+f.close()

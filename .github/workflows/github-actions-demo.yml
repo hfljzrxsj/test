@@ -9,15 +9,15 @@ on:
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+    # strategy:
+    #   matrix:
+    #     python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.10"
       - name: Install dependencies
         run: |
           python -m venv ./.venv
@@ -26,6 +26,17 @@ jobs:
         run: |
           . ./.venv/bin/activate
           python ./a.py
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.office365.com
+          server_port: 587
+          username: chuangtiso@outlook.com
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Github Actions job result
+          to: 2506370693@qq.com
+          from: chuangtiso@outlook.com
+          body: ${{github.repository}} push log : ${{steps.git_log.outputs.log}}
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."

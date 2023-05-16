@@ -26,6 +26,17 @@ jobs:
         run: |
           # . ./.venv/bin/activate
           python ./a.py
+      - name: Commit files
+        run: |
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add README.md
+            git commit -m "docs: update blog"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
       # - name: Send email
       #   uses: dawidd6/action-send-mail@v3
       #   with:

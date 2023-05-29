@@ -28,5 +28,6 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(f'<h2>{i}. {match.group(1)}</h2>'.encode())
         for match in online_matches:
             self.wfile.write(f'<h1>&#x5728;&#x7ebf;&#x4eba;&#x6570;&#xff1a;{match.group(1)}</h1>'.encode())
+        self.wfile.write(str(self.path).encode())
         sock.close()
         return

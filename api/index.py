@@ -1,4 +1,6 @@
 from http.server import BaseHTTPRequestHandler
+import socket
+import re
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):

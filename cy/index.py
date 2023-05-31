@@ -13,9 +13,9 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(b'<meta http-equiv=Content-Type content="charset=UTF-8">')
         self.wfile.write(b'<style>*{text-align:center;font-size:120%}</style>')
         # if self.path == '/api/weather':
-        if self.path == '/api':
+        if self.path == '/cy/weather':
             runWeatheraio(self)
-        elif self.path == '/api/cy':
+        elif self.path == '/cy':
             runCy(self)
         else:
             self.wfile.write(self.path.encode())

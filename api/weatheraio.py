@@ -106,4 +106,9 @@ def runWeatheraio(s):
     # f(url31, '1">(.*?)℃', '  哈尔滨yangshitianqi'),
     # f_(url26, r'(-?\d{1,2})℃</p', '  南岗so', '  (体感)南岗so', 0, 1),
     # f_(url45, r'(-?\d{1,2})[<°][s ][p<]', '  南岗qq', '  (小时)南岗qq', 0, 1, headers=headers_qq)
-    asyncio.get_event_loop().run_until_complete(asyncio.wait([asyncio.ensure_future(i) for i in printf]))
+    # asyncio.get_event_loop().run_until_complete(asyncio.wait([asyncio.ensure_future(i) for i in printf]))
+    async def runWeatheraios():
+        await asyncio.wait([asyncio.ensure_future(i) for i in printf])
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.run_until_complete(runWeatheraios())

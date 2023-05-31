@@ -62,4 +62,9 @@ def runCy(s):
     cyhrb=[cy(r'lDress[\s\S]*?-.">([\s\S]*?)<[\s\S]*?</d', url1),cy('sing.*?c":"(.*?)"', url2),cy('衣指数","type":"(.*?)"}', url3),cy(r'数：([\s\S]*?)</dd', url15),cy('sin.*?ary":"(.*?)"', url13),cyu('3: (.*?)"', url4),cy('e">(.*?)<', url5),cy('t_hint":"(.*?)","p', url6, headers_),cy('衣<em>(.*?)</p', url7_),cy(r'>空调[\s\S]*?a >([\s\S]*?)</span>[\s]{2}</l', url8),cy('op">(.*?)<', url9),cy('衣指数","i3":"","i4":"(.*?)","i6', url10, headers_),cyu('02","i3":"","i4":"(.*?)","i6', url11),cy('content":"(.*?)","n', url12),cy('>穿衣指数：(.*?)。">', url14),cy('衣指数","type":"(.*?)"}', url17),cyu(r'i":\["(.*?)"\]', url18),cypost('([^ -~]*.{37}[^ -~]*).{15}穿衣', url24),cy('数：</span>(.*?)<', url20),cyu(r'3\\u6307\\u6570","level":"(.*?)"}', url21),cy('sing":{"brief":"(.*?)"', url22),cy('g":{"brf":"(.*?)"}', url23),cy(r'衣[\s\S]*?g>([\s\S]*?)</p', url25),cy('衣指数：(.*?)</p', url26)]
     # cy('v class="fr">(.*?)</', url16),
     # cy(r'_h">([\s\S]*?)<', url7),
-    asyncio.get_event_loop().run_until_complete(asyncio.wait([asyncio.ensure_future(i) for i in cyhrb]))
+    # asyncio.get_event_loop().run_until_complete(asyncio.wait([asyncio.ensure_future(i) for i in cyhrb]))
+    async def runWeatheraios():
+        await asyncio.wait([asyncio.ensure_future(i) for i in cyhrb])
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.run_until_complete(runWeatheraios())

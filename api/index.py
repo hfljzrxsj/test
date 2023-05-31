@@ -1,3 +1,6 @@
+import os
+import sys
+sys.path.append(os.path.dirname(__file__))
 from http.server import BaseHTTPRequestHandler
 from weatheraio import runWeatheraio
 from cy import runCy

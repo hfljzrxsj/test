@@ -11,11 +11,12 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('charset', 'utf-8')
         self.end_headers()
         self.wfile.write(b'<meta http-equiv=Content-Type content="charset=UTF-8">')
+        self.wfile.write(b'<meta name=viewport content="width=device-width">')
         self.wfile.write(b'<style>*{text-align:center;font-size:120%}</style>')
         # if self.path == '/api/weather':
-        if self.path == '/cy/weather':
+        if self.path == '/api':
             runWeatheraio(self)
-        elif self.path == '/cy':
+        elif self.path == '/api/cy':
             runCy(self)
         else:
             self.wfile.write(self.path.encode())

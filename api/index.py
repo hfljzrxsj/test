@@ -16,4 +16,6 @@ class handler(BaseHTTPRequestHandler):
             runWeatheraio(self)
         elif self.path == '/api/cy':
             runCy(self)
+        else:
+            self.wfile.write(self.path.encode())
         return

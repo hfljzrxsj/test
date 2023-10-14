@@ -1,0 +1,122 @@
+{
+  "_@babel-531ed693.js": {
+    "file": "js/@babel-531ed693.js"
+  },
+  "_@emotion-afdb9580.js": {
+    "file": "js/@emotion-afdb9580.js",
+    "imports": [
+      "_hoist-non-react-statics-f84d2b88.js",
+      "_react-e8886b06.js",
+      "_@babel-531ed693.js",
+      "_stylis-79144faa.js"
+    ]
+  },
+  "_@mui-119afba8.js": {
+    "file": "js/@mui-119afba8.js",
+    "imports": [
+      "_react-is-a192e302.js",
+      "_react-e8886b06.js",
+      "_@babel-531ed693.js",
+      "_clsx-1229b3e0.js",
+      "_@emotion-afdb9580.js",
+      "_react-transition-group-b4c1b803.js",
+      "_react-dom-4d145aa7.js"
+    ]
+  },
+  "_@popperjs-4ed993c7.js": {
+    "file": "js/@popperjs-4ed993c7.js"
+  },
+  "_clsx-1229b3e0.js": {
+    "file": "js/clsx-1229b3e0.js"
+  },
+  "_dom-helpers-4ed993c7.js": {
+    "file": "js/dom-helpers-4ed993c7.js"
+  },
+  "_hoist-non-react-statics-f84d2b88.js": {
+    "file": "js/hoist-non-react-statics-f84d2b88.js"
+  },
+  "_object-assign-b33fa8b7.js": {
+    "file": "js/object-assign-b33fa8b7.js"
+  },
+  "_prop-types-4ed993c7.js": {
+    "file": "js/prop-types-4ed993c7.js"
+  },
+  "_react-dom-4d145aa7.js": {
+    "file": "js/react-dom-4d145aa7.js",
+    "imports": [
+      "_hoist-non-react-statics-f84d2b88.js",
+      "_react-e8886b06.js",
+      "_scheduler-12376d7f.js"
+    ]
+  },
+  "_react-e8886b06.js": {
+    "file": "js/react-e8886b06.js",
+    "imports": [
+      "_object-assign-b33fa8b7.js",
+      "_hoist-non-react-statics-f84d2b88.js"
+    ]
+  },
+  "_react-is-a192e302.js": {
+    "file": "js/react-is-a192e302.js"
+  },
+  "_react-redux-28064587.js": {
+    "file": "js/react-redux-28064587.js",
+    "imports": [
+      "_react-e8886b06.js",
+      "_hoist-non-react-statics-f84d2b88.js",
+      "_react-dom-4d145aa7.js"
+    ]
+  },
+  "_react-transition-group-b4c1b803.js": {
+    "file": "js/react-transition-group-b4c1b803.js",
+    "imports": [
+      "_react-e8886b06.js",
+      "_react-dom-4d145aa7.js",
+      "_@babel-531ed693.js"
+    ]
+  },
+  "_redux-5ef48740.js": {
+    "file": "js/redux-5ef48740.js",
+    "imports": [
+      "_@babel-531ed693.js"
+    ]
+  },
+  "_redux-thunk-ef899f4c.js": {
+    "file": "js/redux-thunk-ef899f4c.js"
+  },
+  "_scheduler-12376d7f.js": {
+    "file": "js/scheduler-12376d7f.js"
+  },
+  "_stylis-79144faa.js": {
+    "file": "js/stylis-79144faa.js"
+  },
+  "index.css": {
+    "file": "css/index-28d00a8b.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "css": [
+      "css/index-28d00a8b.css"
+    ],
+    "file": "js/main-28f95d09.js",
+    "imports": [
+      "_react-e8886b06.js",
+      "_react-redux-28064587.js",
+      "_redux-5ef48740.js",
+      "_redux-thunk-ef899f4c.js",
+      "_hoist-non-react-statics-f84d2b88.js",
+      "_@mui-119afba8.js",
+      "_react-dom-4d145aa7.js",
+      "_object-assign-b33fa8b7.js",
+      "_@babel-531ed693.js",
+      "_react-is-a192e302.js",
+      "_clsx-1229b3e0.js",
+      "_@emotion-afdb9580.js",
+      "_stylis-79144faa.js",
+      "_react-transition-group-b4c1b803.js",
+      "_scheduler-12376d7f.js"
+    ],
+    "isEntry": true,
+    "src": "index.html"
+  }
+}

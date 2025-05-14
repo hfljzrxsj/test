@@ -1,62 +1,38 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: 
-  workflow_dispatch:
-  # push:
-  # schedule:
-  #   - cron: "20 10 * * *"
-  #   - cron: "20 4 * * *"
+name: Timestamp Cache Example
+
+on:
+  workflow_dispatch: # 手动触发工作流
+
 jobs:
-  Explore-GitHub-Actions:
+  cache-timestamp:
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      # - name: Install dependencies
-      #   run: |
-      #     python -m venv ./.venv
-      #     . ./.venv/bin/activate
-      # - name: runPython
-      #   run: |
-          # . ./.venv/bin/activate
-          # python ./a.py
-      # - name: Commit files
-      #   run: |
-      #       git config --local user.email "github-actions[bot]@users.noreply.github.com"
-      #       git config --local user.name "github-actions[bot]"
-      #       git add .
-      #       git commit -m "docs: update blog"
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: ${{ github.ref }}
-      # - name: Send email
-      #   uses: dawidd6/action-send-mail@v3
-      #   with:
-      #     server_address: smtp.office365.com
-      #     server_port: 587
-      #     username: chuangtiso@outlook.com
-      #     password: ${{secrets.MAIL_PASSWORD}}
-      #     subject: Github Actions job result
-      #     to: 2506370693@qq.com
-      #     from: chuangtiso@outlook.com
-      #     body: ${{steps.git_log.outputs.log}}
-          # push log : ${{steps.git_log.outputs.log}}
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Load cached timestamp
+      id: load-cache
+      uses: actions/cache@v3
+      with:
+        path: ./timestamp.txt # 缓存的文件路径
+        key: timestamp-cache # 缓存的键值
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # 使用 Node.js 版本
+
+    - name: Run timestamp comparison script
+      id: compare-timestamps
+      run: |
+        node script.mjs
+      env:
+        CACHE_FILE: ./timestamp.txt
+
+    - name: Save new timestamp to cache
+      if: steps.compare-timestamps.outputs.update_cache == 'true'
+      uses: actions/cache@v3
+      with:
+        path: ./timestamp.txt
+        key: timestamp-cache

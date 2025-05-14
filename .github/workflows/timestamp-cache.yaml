@@ -1,0 +1,38 @@
+name: Timestamp Cache Example
+
+on:
+  workflow_dispatch: # 手动触发工作流
+
+jobs:
+  cache-timestamp:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Load cached timestamp
+      id: load-cache
+      uses: actions/cache@v3
+      with:
+        path: ./timestamp.txt # 缓存的文件路径
+        key: timestamp-cache # 缓存的键值
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # 使用 Node.js 版本
+
+    - name: Run timestamp comparison script
+      id: compare-timestamps
+      run: |
+        node script.mjs
+      env:
+        CACHE_FILE: ./timestamp.txt
+
+    - name: Save new timestamp to cache
+      if: steps.compare-timestamps.outputs.update_cache == 'true'
+      uses: actions/cache@v3
+      with:
+        path: ./timestamp.txt
+        key: timestamp-cache
